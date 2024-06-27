@@ -13,6 +13,7 @@ int main()
     std::cout << "\nHello and welcome to the City College Bank!";
     do
     {
+        //chris- I also think options 4 5 and 6, are unecessary to split up when they essentially do the same thing, should just be one option
         std::cout << "\nPlease make a selection below"
             << "\n1: Display the balance (account ID should be provided)"
             << "\n2: Deposit money (Credit)"
