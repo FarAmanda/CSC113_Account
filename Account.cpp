@@ -1,28 +1,33 @@
 #include "Account.h"
 #include <iostream>
 #include <iomanip>
+#include <algorithm>
 using namespace banking;
 
 // Returns index
 int account::startUp(account accounts[], int size)
 {
-    int x;
+    int accNumber; //local account number
     do {
         std::cout << "Please enter your five digit account number:\n ";
-        std::cin >> x;
-    } while (x <= 9999 || x > 99999);
+        std::cin >> accNumber;
+    } while (accNumber <= 9999 || accNumber > 99999);
 
     for (int i = 0; i < size; i++)
     {
         if (this[i].accountNum == 0)
         {
-            this[i].accountNum = x;
+            this[i].accountNum = accNumber;
             std::cout << "Hello new user, what is your name? ";
             std::cin >> this[i].name;
-            std::cout << "\nWelcome Amanda! Your new account has been created.\n";
+            std::cout << "Hello " << this[i].name << "! Nice to meet you!\n\n";
             return i;
+
+            //corrected this bit of code -Rabbit
+            //std::cout << "\nWelcome Amanda! Your new account has been created.\n";
+            //return i;
         }
-        else if (this[i].accountNum == x)
+        else if (this[i].accountNum == accNumber)
         {
             std::cout << "Hello " << this[i].name << "! welcome back!\n\n";
             return i;
@@ -35,6 +40,7 @@ int account::startUp(account accounts[], int size)
     {
         std::cout << "Account Number #" << this[i].accountNum << "User " << this[i].name;
     }
+
     int y; 
     while (true)
     {
@@ -77,12 +83,32 @@ double account::debit()
         return this->balance;
     }
 };
-void banking::account::printAsc(account arr[], int size)
-{
 
-};
+bool account::sortAscID(const account& a, const account& b) {
+    return a.accountNum < b.accountNum;
+}
 
-void printDesc(Account arr[]);
+void account::printAscID(account arr[], int size) {
+    // Sort the array of accounts using sortAscID function
+    // arr is the starting point and arr+size is the end point
+    std::sort(arr, arr + size, account::sortAscID);
+
+    // Print sorted accounts
+    std::cout << "Accounts sorted by ID in ascending order:\n";
+    for (int i = 0; i < size; ++i) {
+        std::cout << "ID: " << arr[i].accountNum
+            << ", Name: " << arr[i].name
+            << ", Balance: $" << std::fixed << std::setprecision(2) << arr[i].balance << "\n";
+    }
+}
+
+
+//void banking::account::printAsc(account arr[], int size)
+//{
+//
+//};
+//
+//void printDesc(Account arr[]);
 
 
 

@@ -46,9 +46,10 @@ int main()
             break;
 
         case 4:
+            
             break;
-
         case 5:
+            users[0].printAscID(users, limit);
             break;
         case 6:
             break;
