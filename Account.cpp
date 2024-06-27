@@ -17,12 +17,23 @@ int account::startUp(account accounts[], int size)
     {
         if (this[i].accountNum == 0)
         {
-            this[i].accountNum = accNumber;
-            std::cout << "Hello new user, what is your name? ";
-            std::cin >> this[i].name;
-            std::cout << "Hello " << this[i].name << "! Nice to meet you!\n\n";
-            return i;
-
+            //chris- I added this part becuase I thought that we shouldn't immediately create a new account, ask the user if the input was a mistake first
+            //has some kinks to work out
+            int option = 1;
+            std::cout << "number entered does not match any preexisting accounts, enter 1 if it was a mistake, or 2 to create a new account: ";
+            std::cin >> option;
+            switch(option){
+                case 1:
+                    this -> startUp(accounts, 5);
+                  break;
+                case 2:
+                this[i].accountNum = accNumber;
+                std::cout << "Hello new user, what is your name? ";
+                std::cin >> this[i].name;
+                std::cout << "Hello " << this[i].name << "! Nice to meet you!\n\n";
+                return i;
+                
+            }
             //corrected this bit of code -Rabbit
             //std::cout << "\nWelcome Amanda! Your new account has been created.\n";
             //return i;
@@ -85,7 +96,9 @@ double account::debit()
 };
 
 bool account::sortAscID(const account& a, const account& b) {
-    return a.accountNum < b.accountNum;
+    //there was an issue that whenever we called option 5, it reset the accounts and no old ids would work(all would create a new account)
+    //this fixes that issue but causes others unfortunately
+    return min::(a.accountNum, b.accountNum);
 }
 
 void account::printAscID(account arr[], int size) {
