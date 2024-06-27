@@ -128,7 +128,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Account.cpp" />
-    <ClCompile Include="main.cpp" />
+    <ClCompile Include="CSC113_Account.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Account.h" />
