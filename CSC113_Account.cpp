@@ -47,7 +47,7 @@ int main()
             break;
 
         case 4:
-            
+            users[0].printAscBalance(users, limit);
             break;
         case 5:
             users[0].printAscID(users, limit);
