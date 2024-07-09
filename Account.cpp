@@ -30,10 +30,15 @@ int account::startUp(account accounts[], int size)
                 this[i].accountNum = accNumber;
                 std::cout << "Hello new user, what is your name? ";
                 std::cin >> this[i].name;
-                std::cout << "Hello " << this[i].name << "! Nice to meet you!\n\n";
-                return i;
-                
+                //taking this out fixed a previous error that it would call the loop endlessly when you inputed 1 
+                //even once
+                //std::cout << "Hello " << this[i].name << "! Nice to meet you!\n\n";
+                //return i;
+                break; 
             }
+            //instead I have it here
+            std::cout << "Hello " << this[i].name << "! Nice to meet you!\n\n";
+            return i;
             //corrected this bit of code -Rabbit
             //std::cout << "\nWelcome Amanda! Your new account has been created.\n";
             //return i;
@@ -98,7 +103,7 @@ double account::debit()
 bool account::sortAscID(const account& a, const account& b) {
     //there was an issue that whenever we called option 5, it reset the accounts and no old ids would work(all would create a new account)
     //this fixes that issue but causes others unfortunately
-    return min::(a.accountNum, b.accountNum);
+    return std::min(a.accountNum, b.accountNum);
 }
 
 void account::printAscID(account arr[], int size) {
