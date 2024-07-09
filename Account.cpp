@@ -106,6 +106,11 @@ bool account::sortAscID(const account& a, const account& b) {
     return std::min(a.accountNum, b.accountNum);
 }
 
+bool account::sortAscBalance(const account& a, const account& b) {
+    //for some reason this lets the ids to stay stored even after we display the accounts
+ return std::min(a.balance, b.balance);
+}
+
 void account::printAscID(account arr[], int size) {
     // Sort the array of accounts using sortAscID function
     // arr is the starting point and arr+size is the end point
@@ -120,6 +125,19 @@ void account::printAscID(account arr[], int size) {
     }
 }
 
+void account::printAscBalance(account arr[], int size) const {
+    // Sort the array of accounts using sortAscID function
+    // arr is the starting point and arr+size is the end point
+    std::sort(arr, arr + size, account::sortAscBalance);
+
+    // Print sorted accounts
+    std::cout << "Accounts sorted by Balance in ascending order:\n";
+    for (int i = 0; i < size; ++i) {
+        std::cout << "ID: " << arr[i].accountNum
+            << ", Name: " << arr[i].name
+            << ", Balance: $" << std::fixed << std::setprecision(2) << arr[i].balance << "\n";
+    }
+}
 
 //void banking::account::printAsc(account arr[], int size)
 //{
