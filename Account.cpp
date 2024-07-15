@@ -34,7 +34,9 @@ int account::startUp(account accounts[], int size)
                 //even once
                 //std::cout << "Hello " << this[i].name << "! Nice to meet you!\n\n";
                 //return i;
-                break; 
+                break;
+                default: //gets rid of the issue it was causing when you inputted something that is not  or 2
+                continue; //the continue allows the code to simple go to the next iteration which does the if statement again
             }
             //instead I have it here
             std::cout << "Hello " << this[i].name << "! Nice to meet you!\n\n";
