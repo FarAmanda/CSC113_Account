@@ -53,6 +53,7 @@ int main()
             users[0].printAscID(users, limit);
             break;
         case 6:
+            users[0].printAscName(users, limit);
             break;
         case 0:
             break;
