@@ -20,8 +20,9 @@ namespace banking {
 
 		//for sorting and printing the account objects based on ID
 		static bool sortAscID(const account& a, const account& b);
+		static bool sortAscBalance(const account& a, const account& b);
 		void printAscID(account arr[], int size);
-
+		void printAscBalance(account arr[], int size) const;
 		//not necessary because we only need to display in ascending order
 		//void printDesc(account arr[]);
 
