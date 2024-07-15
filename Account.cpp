@@ -103,14 +103,15 @@ double account::debit()
 };
 
 bool account::sortAscID(const account& a, const account& b) {
-    //there was an issue that whenever we called option 5, it reset the accounts and no old ids would work(all would create a new account)
-    //this fixes that issue but causes others unfortunately
-    return std::min(a.accountNum, b.accountNum);
+    return a.accountNum > b.accountNum;
 }
 
 bool account::sortAscBalance(const account& a, const account& b) {
-    //for some reason this lets the ids to stay stored even after we display the accounts
- return std::min(a.balance, b.balance);
+ return a.balance > b.balance;
+}
+
+bool account::sortAscName(const account& a, const account& b){
+    return a.name > b.name;
 }
 
 void account::printAscID(account arr[], int size) {
@@ -128,12 +129,27 @@ void account::printAscID(account arr[], int size) {
 }
 
 void account::printAscBalance(account arr[], int size) const {
-    // Sort the array of accounts using sortAscID function
+    // Sort the array of accounts using sortAscBalance function
     // arr is the starting point and arr+size is the end point
     std::sort(arr, arr + size, account::sortAscBalance);
 
     // Print sorted accounts
     std::cout << "Accounts sorted by Balance in ascending order:\n";
+    for (int i = 0; i < size; ++i) {
+        std::cout << "ID: " << arr[i].accountNum
+            << ", Name: " << arr[i].name
+            << ", Balance: $" << std::fixed << std::setprecision(2) << arr[i].balance << "\n";
+    }
+}
+
+void account::printAscName(account arr[], int size) const
+{
+    // Sort the array of accounts using sortAscName function
+    // arr is the starting point and arr+size is the end point
+    std::sort(arr, arr + size, account::sortAscName);
+
+    // Print sorted accounts
+    std::cout << "Accounts sorted by Name in ascending order:\n";
     for (int i = 0; i < size; ++i) {
         std::cout << "ID: " << arr[i].accountNum
             << ", Name: " << arr[i].name
