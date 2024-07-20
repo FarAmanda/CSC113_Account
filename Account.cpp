@@ -81,15 +81,15 @@ double account::debit()
 };
 
 bool account::sortAscID(const account& a, const account& b) {
-    return a.accountNum > b.accountNum;
+    return a.accountNum < b.accountNum;
 }
 
 bool account::sortAscBalance(const account& a, const account& b) {
- return a.balance > b.balance;
+ return a.balance < b.balance;
 }
 
 bool account::sortAscName(const account& a, const account& b){
-    return a.name > b.name;
+    return a.name < b.name;
 }
 
 void account::printAscID(account arr[], int size) {
