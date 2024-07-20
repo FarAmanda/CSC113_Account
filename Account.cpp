@@ -17,33 +17,11 @@ int account::startUp(account accounts[], int size)
     {
         if (this[i].accountNum == 0)
         {
-            //chris- I added this part becuase I thought that we shouldn't immediately create a new account, ask the user if the input was a mistake first
-            //has some kinks to work out
-            int option = 1;
-            std::cout << "number entered does not match any preexisting accounts, enter 1 if it was a mistake, or 2 to create a new account: ";
-            std::cin >> option;
-            switch(option){
-                case 1:
-                    this -> startUp(accounts, 5);
-                  break;
-                case 2:
-                this[i].accountNum = accNumber;
+            this[i].accountNum = accNumber;
                 std::cout << "Hello new user, what is your name? ";
                 std::cin >> this[i].name;
-                //taking this out fixed a previous error that it would call the loop endlessly when you inputed 1 
-                //even once
-                //std::cout << "Hello " << this[i].name << "! Nice to meet you!\n\n";
-                //return i;
-                break;
-                default: //gets rid of the issue it was causing when you inputted something that is not  or 2
-                continue; //the continue allows the code to simple go to the next iteration which does the if statement again
-            }
-            //instead I have it here
             std::cout << "Hello " << this[i].name << "! Nice to meet you!\n\n";
             return i;
-            //corrected this bit of code -Rabbit
-            //std::cout << "\nWelcome Amanda! Your new account has been created.\n";
-            //return i;
         }
         else if (this[i].accountNum == accNumber)
         {
